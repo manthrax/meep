@@ -1,13 +1,16 @@
 var time=performance.now();
 var frame=0;
 function start(){
-	var mainview = new renderer(canv);
-	var map={0:{cells:[],items:[]}}
+	var world = new World();
+	var renderer = new Renderer(canv,world);
+
 	var bots=[];
-	for(var i=0;i<10;i++){var sp=new sprite();bots.push(sp);map[0].items.push(sp);}
+
+	for(var i=0;i<1000;i++){var sp=new Sprite(world);bots.push(sp);world.add(sp);}
+
 	function render(){
 		requestAnimationFrame(render);
-		mainview.repaint(map);
+		renderer.repaint();
 		for(var i=0;i<bots.length;i++)bots[i].update();
 		frame++;
 	}
