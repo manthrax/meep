@@ -1,0 +1,53 @@
+//Test
+
+
+top:
+    ldi 0
+    st [0]
+    ldi 0.1
+    st #steering
+
+
+loop0:
+    ldi 1
+    add [0]
+    ldi 10
+    cmp [0]
+    blt @loop0
+
+
+
+    ldi -0.1
+    st #steering
+
+
+
+    ldi 0
+    st [0]
+
+
+
+loop1:
+    ldi 1
+    add [0]
+    ldi 10
+    cmp [0]
+
+    blt @loop1
+
+    ldi 0
+    st [0]
+    
+    ldi 0.0
+    st #steering
+    ldi 1.0
+    st #movement
+loop2:
+    ldi 1
+    add [0]
+    ldi 30
+    cmp [0]
+    blt @loop2
+
+
+    jmp @top

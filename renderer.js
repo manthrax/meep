@@ -16,11 +16,21 @@ function Renderer(canv,world) {
             world.moveOrigin(-evt.movementX,-evt.movementY);
         }else{
             var terrain = world.getTerrainAtScreen(evt.clientX,evt.clientY,function(terrain){
+                bgctx.fillStyle = 'black';
+                bgctx.strokeStyle = 'white';
                 bgctx.fillRect(0,0,100,20);
-                bgctx.strokeText(terrain,3,13)                
+                bgctx.strokeText(terrain,3,13);            
             });
         }
     }
+    
+    window.onkeydown = function(evt){
+        if(evt.key=='c'){
+            world.centerOnOldest();
+        }
+    }
+
+
     this.resize = function() {
         canv.width = window.innerWidth;
         canv.height = window.innerHeight;

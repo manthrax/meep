@@ -45,7 +45,7 @@ function Terrain(){
         d.remove();
     }    
 
-    var viewScale = 0.1;
+    var noiseScale = 0.03;
 
     this.generateMapTile = function (pdata,ox,oy,width,height){
         var oct1 = 1.0;
@@ -58,8 +58,8 @@ function Terrain(){
 
         for (var y = height; y > 0; ) { y--;
             for (var x = width; x > 0;) { x--;
-                var px = (x+ox) * viewScale;
-                var py = (y+oy) * viewScale;
+                var px = (x+ox) * noiseScale;
+                var py = (y+oy) * noiseScale;
                 var nv = (noise.noise(px * f1, py * f1, 0)*oct1) + (noise.noise(px * f2, py * f2, 0) * oct2);
                 var terrain = terrainPalette[((nv + osum) * terrainPalette.length * 0.49999 / osum) | 0];
                 terrains[(y*width)+x]=terrain;
